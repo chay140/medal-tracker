@@ -1,4 +1,5 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=BDBDC8&height=150&section=header" />
+
 # medal-tracker
 > React-Vite 사용한 React projecct
 배포 링크:
@@ -12,6 +13,24 @@
 * 등록된 국가 메달 수 업데이트
 * 금/은/동 혹은 총 메달 수로 정렬 가능
 * 각 국가 정보 삭제 옵션
+
+## 컴포넌트 구성
+```css
+App
+│
+├── MedalData
+    ├── MedalForm
+	|		├── InputGroup
+    |       		├── CountryInput
+    |       		├── MedalInput
+    |
+    |       ├── ButtonGroup──Button
+    |
+    ├── Table
+			├── Table
+                ├── Button
+                ├── SortSelector
+```
 
 # 기술 스택
 ![js](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=black)
