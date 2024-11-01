@@ -2,6 +2,7 @@
 
 # medal-tracker
 > React-Vite 사용한 React projecct
+
 배포 링크:
 
 ## 페이지 구성
@@ -20,16 +21,15 @@ App
 │
 ├── MedalData
     ├── MedalForm
-	|		├── InputGroup
-    |       		├── CountryInput
-    |       		├── MedalInput
-    |
-    |       ├── ButtonGroup──Button
+    |		├── InputGroup
+    |       	|	├── CountryInput
+    |       	|	├── MedalInput
+    |		|
+    |       	├── ButtonGroup──Button
     |
     ├── Table
-			├── Table
-                ├── Button
-                ├── SortSelector
+	├── Button
+	├── SortSelector
 ```
 
 # 기술 스택
