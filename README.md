@@ -3,7 +3,7 @@
 # medal-tracker
 > React-Vite 사용한 React projecct
 
-배포 링크: https://medal-tracker-hrm8yv4a5-chay-parks-projects.vercel.app 
+배포 링크: https://medal-tracker-kappa.vercel.app/
 
 ## 페이지 구성
 * 메달 입력 폼
