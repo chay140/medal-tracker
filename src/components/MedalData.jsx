@@ -10,7 +10,6 @@ function MedalData() {
   // localStorage 체크해서 데이터 받아오기
   useEffect(() => {
     const storedCountries = localStorage.getItem("countries");
-    // console.log("check point 0");
     // 존재할시 setCountries
     if (storedCountries) {
       console.log("check point 1");
