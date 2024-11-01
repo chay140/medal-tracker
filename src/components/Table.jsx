@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
 import SortSelector from "./SortSelector";
 
-function Table({ countries, deleteCountryHandler, sortHandler, sortMode }) {
+function Table({ countries, deleteCountryHandler }) {
+  const [sortMode, setSortMode] = useState("byMedal");
+
   if (countries.length === 0) {
     return (
       <div>
@@ -12,27 +14,38 @@ function Table({ countries, deleteCountryHandler, sortHandler, sortMode }) {
   }
 
   // 결과 정렬
-  const finalList = countries.map((data, index) => {
-    return (
-      <tr key={index}>
-        <td>{index + 1}</td>
-        <td>{data.country}</td>
-        <td>{data.gold}</td>
-        <td>{data.silver}</td>
-        <td>{data.bronze}</td>
-        <td>
-          <Button
-            className="delete"
-            onClick={() => {
-              deleteCountryHandler(data);
-            }}
-          >
-            삭제
-          </Button>
-        </td>
-      </tr>
-    );
-  });
+  const finalList = countries
+    .sort((a, b) => {
+      if (sortMode === "byMedal") {
+        // 내림차순
+        if (a.gold !== b.gold) return b.gold - a.gold;
+        if (a.silver !== b.silver) return b.silver - a.silver;
+        return b.bronze - a.bronze;
+      } else if (sortMode === "byTotal") {
+        return b.totalMedal - a.totalMedal;
+      }
+    })
+    .map((data, index) => {
+      return (
+        <tr key={index}>
+          <td>{index + 1}</td>
+          <td>{data.country}</td>
+          <td>{data.gold}</td>
+          <td>{data.silver}</td>
+          <td>{data.bronze}</td>
+          <td>
+            <Button
+              className="delete"
+              onClick={() => {
+                deleteCountryHandler(data);
+              }}
+            >
+              삭제
+            </Button>
+          </td>
+        </tr>
+      );
+    });
 
   return (
     <div>
@@ -40,7 +53,7 @@ function Table({ countries, deleteCountryHandler, sortHandler, sortMode }) {
         <thead>
           <tr>
             <th>
-              <SortSelector sortMode={sortMode} sortHandler={sortHandler} />
+              <SortSelector sortMode={sortMode} sortHandler={setSortMode} />
             </th>
             <th>국가명</th>
             <th>금메달</th>

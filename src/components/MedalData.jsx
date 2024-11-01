@@ -6,29 +6,28 @@ function MedalData() {
   // 국가별 데이터
   const [countries, setCountries] = useState([]);
 
-  // 정렬 모드
-  const [sortMode, setSortMode] = useState("byMedal");
-  const [tableKey, setTableKey] = useState(0);
+  // 처음 렌더시
+  // localStorage 체크해서 데이터 받아오기
+  useEffect(() => {
+    const storedCountries = localStorage.getItem("countries");
+    // console.log("check point 0");
+    // 존재할시 setCountries
+    if (storedCountries) {
+      console.log("check point 1");
 
-  // 정렬 후 setCountries
-  // 추가, 업데이트, 삭제 함수 모두
-  // setCountries가 아닌 sortedSetCountries를 쓰게끔
-  const sortedSetCountries = (data) => {
-    if (sortMode === "byMedal") {
-      data.sort((a, b) => {
-        // 내림차순
-        if (a.gold !== b.gold) return b.gold - a.gold;
-        if (a.silver !== b.silver) return b.silver - a.silver;
-        return b.bronze - a.bronze;
-      });
-    } else if (sortMode === "byTotal") {
-      data.sort((a, b) => b.totalMedal - a.totalMedal);
+      setCountries(JSON.parse(storedCountries));
     }
-    setCountries(data);
+  }, []);
 
-    // Table의 키를 하나 바꿈으로써 re-render
-    setTableKey((prevKey) => prevKey + 1);
-  };
+  // updatLocalStorage ->> setCountry 혹은 업데이트 로직이 있을 때 실행
+
+  // countries state가 바뀔 경우 localStorage 업데이트
+  useEffect(() => {
+    console.log("check point 2");
+    console.log(countries);
+
+    localStorage.setItem("countries", JSON.stringify(countries));
+  }, [countries]);
 
   // 추가 함수
   const addCountryHandler = (newData) => {
@@ -41,7 +40,7 @@ function MedalData() {
       // 입력폼 최기화 X
       return -1;
     } else {
-      sortedSetCountries([...countries, newData]);
+      setCountries([...countries, newData]);
       return 1;
     }
   };
@@ -59,7 +58,7 @@ function MedalData() {
       const updated_countries = countries.filter((_, index) => {
         return index !== target_index;
       });
-      sortedSetCountries([...updated_countries, newData]);
+      setCountries([...updated_countries, newData]);
 
       return 1;
     } else {
@@ -76,21 +75,11 @@ function MedalData() {
       return data.country !== targetData.country;
     });
 
-    sortedSetCountries(deletedCountries);
+    setCountries(deletedCountries);
   };
 
-  // useState()가 비동기라 바로 결과를 보려면 필요
-  // 정렬 모드가 바뀌었을때 필요
-  useEffect(() => {
-    if (sortMode) {
-      sortedSetCountries([...countries]);
-    }
-  }, [sortMode]);
-
-  // 정렬 모드 변환시 Re-render
-  const sortChangeHandler = (mode) => {
-    setSortMode(mode);
-  };
+  // 노트: useEffect 수가 많아지는 경우라면
+  // 컴포넌트 분리가 필요한지 아닌지 확인해보자
 
   return (
     <>
@@ -99,11 +88,8 @@ function MedalData() {
         updateCountryHandler={updateCountryHandler}
       />
       <Table
-        key={tableKey}
         countries={countries}
         deleteCountryHandler={deleteCountryHandler}
-        sortMode={sortMode}
-        sortHandler={sortChangeHandler}
       />
     </>
   );
