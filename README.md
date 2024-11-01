@@ -1,9 +1,17 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=BDBDC8&height=150&section=header" />
 
-# medal-tracker
+# Medal-tracker
 > React-Vite 사용한 React projecct
 
 배포 링크: https://medal-tracker-kappa.vercel.app/
+
+## 페이지 소개
+올림픽의 메달 집계를 관리하는 SPA 페이지 
+
+사용자가 국가와 메달 수를 직접 추가/수정할 수 있으며, 데이터는 내림차순으로 출력됩니다. 순위 정렬은 금/은/동 순서 혹은 총 메달 수로 지정이 가능합니다.
+
+![image](https://github.com/user-attachments/assets/c1fa0b5d-901d-45bd-ac21-1ecfac9e51ab)
+
 
 ## 페이지 구성
 * 메달 입력 폼
@@ -12,12 +20,13 @@
 ## 기능
 * 화면에 국가별 메달 집계를 리스트 형태로 출력 (내림차순) 
 * 폼 제출 시 새로운 나라와 해당 메달 수가 리스트에 추가
+  * 국가명이 비어있는 경우 제출 제한
   * 동일한 국가 존재시 유저에게 알림 (중복 데이터 방지) 
 * 등록된 국가 메달 수 수정
   * 등록되지 않은 국가 수정시 유저에게 알림 
 * 각 국가 정보 삭제 옵션
 * 금/은/동 혹은 총 메달 수로 정렬 가능
-* 로컬 스토리지 활용으로 새로고침시 데이터 유지 구현 
+* 로컬 스토리지 활용으로 새로고침시 데이터 유지 구현
 
 
 ## 컴포넌트 구성
@@ -51,6 +60,7 @@ App
 
 
 # 기술 스택
+![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![js](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=black)
 ![html](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![css](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
