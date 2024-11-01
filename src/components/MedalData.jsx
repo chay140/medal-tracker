@@ -43,10 +43,12 @@ function MedalData() {
   // 업데이트 함수
   const updateCountryHandler = (newData) => {
     console.log("countries =>", countries);
-    if (countries.some((item) => item.country === newData.country)) {
+    if (
+      countries.some((item) => item.country.trim() === newData.country.trim())
+    ) {
       // index 찾기
       const targetIndex = countries.findIndex(
-        (item) => item.country === newData.country
+        (item) => item.country.trim() === newData.country.trim()
       );
 
       // 정보 업데이트 (기존 데이터 지우고 새로운 데이터 추가)
