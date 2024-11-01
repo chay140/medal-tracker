@@ -20,14 +20,9 @@ function MedalData() {
   }, []);
 
   // updatLocalStorage ->> setCountry 혹은 업데이트 로직이 있을 때 실행
-
-  // countries state가 바뀔 경우 localStorage 업데이트
-  useEffect(() => {
-    console.log("check point 2");
-    console.log(countries);
-
-    localStorage.setItem("countries", JSON.stringify(countries));
-  }, [countries]);
+  const updateLocalStorage = (updatedCountries) => {
+    localStorage.setItem("countries", JSON.stringify(updatedCountries));
+  };
 
   // 추가 함수
   const addCountryHandler = (newData) => {
@@ -41,6 +36,7 @@ function MedalData() {
       return -1;
     } else {
       setCountries([...countries, newData]);
+      updateLocalStorage([...countries, newData]);
       return 1;
     }
   };
@@ -50,15 +46,16 @@ function MedalData() {
     console.log("countries =>", countries);
     if (countries.some((item) => item.country === newData.country)) {
       // index 찾기
-      const target_index = countries.findIndex(
+      const targetIndex = countries.findIndex(
         (item) => item.country === newData.country
       );
 
       // 정보 업데이트 (기존 데이터 지우고 새로운 데이터 추가)
-      const updated_countries = countries.filter((_, index) => {
-        return index !== target_index;
+      const updatedCountries = countries.filter((_, index) => {
+        return index !== targetIndex;
       });
-      setCountries([...updated_countries, newData]);
+      setCountries([...updatedCountries, newData]);
+      updateLocalStorage([...updatedCountries, newData]);
 
       return 1;
     } else {
@@ -76,6 +73,7 @@ function MedalData() {
     });
 
     setCountries(deletedCountries);
+    updateLocalStorage(deletedCountries);
   };
 
   // 노트: useEffect 수가 많아지는 경우라면
