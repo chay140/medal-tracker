@@ -1,0 +1,91 @@
+:root {
+  font-family: Noto Sans KR, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #ebe9d4;
+}
+
+body {
+  margin: 0;
+  /* display: flex; */
+  place-items: center;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 2em;
+  line-height: 1.1;
+  color: #002e54;
+}
+
+input {
+  font-size: 18px;
+  border: 1px solid;
+  border-radius: 10px;
+  height: 30px;
+  padding-left: 10px;
+  transition: 0.3s ease;
+  width: 105%;
+}
+
+input:focus {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 10px;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #d6be76;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+button:hover {
+  background-color: rgb(128, 114, 72);
+  color: white;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: rgb(238, 238, 238);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 18px;
+}
+
+thead {
+  background-color: #1d87c2;
+  color: white;
+  padding: 10px;
+}
+
+tr {
+  height: 50px;
+}
+
+select {
+  font-family: Arial;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 18px;
+}
+
+option {
+  font-family: Arial;
+  color: black;
+}

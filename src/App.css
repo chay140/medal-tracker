@@ -1,0 +1,80 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  min-width: 800px;
+  margin: 40px auto;
+  padding: 50px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px #0000001a;
+  border-radius: 8px;
+  color: #333;
+}
+
+/* MedalForm CSS */
+.data-collector {
+  width: 100%;
+  /* max-width: 1200px; */
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+  align-items: flex-end;
+  font-size: 20px;
+}
+
+.group-input {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+/* MedalInput CSS */
+.country-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  padding-bottom: 0;
+  width: 20%;
+}
+
+.number-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  padding-bottom: 0;
+  width: 20%;
+}
+
+/* ButtonGroup */
+.button-group {
+  width: 25%;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 12px;
+}
+
+/* Button */
+.delete {
+  background-color: rgb(246, 70, 70);
+  color: white;
+  font-weight: bold;
+  margin: 10px 0;
+  transition: 0.3s ease;
+}
+
+.delete:hover {
+  background-color: rgb(203, 24, 24);
+}
+
+/* SortSelector */
+.select-wrapper {
+  width: 200px;
+}
