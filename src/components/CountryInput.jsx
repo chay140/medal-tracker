@@ -1,5 +1,3 @@
-import React from "react";
-
 function CountryInput({ country, countryInputHandler }) {
   return (
     <div className="country-input">

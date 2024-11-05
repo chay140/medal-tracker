@@ -1,5 +1,3 @@
-import React from "react";
-
 function MedalInput({medal, label, medalInputHandler}) {
   return (
     <div className="number-input">
