@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.css';
 import MedalData from './components/MedalData';
 
@@ -13,3 +12,4 @@ function App() {
 
 export default App;
 
+ 
